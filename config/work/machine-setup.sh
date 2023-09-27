@@ -9,9 +9,13 @@ $PKG_MANAGER update && $PKG_MANAGER install -y \
 	curl\
 	wget\
 	bat\
+	exa\
 	neofetch\
-	fzf
+	python3\
+	fzf\
+	zoxide
 
+echo "Please create a password for user sherrimn:"
 passwd sherrimn
 
 # Show where we are:
