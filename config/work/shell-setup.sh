@@ -27,7 +27,8 @@ mkdir -p ~/bin
 # add ~/bin to your PATH (.bashrc or .zshrc)
 cd ~/bin
 git clone https://github.com/so-fancy/diff-so-fancy diffsofancy
-chmod +x diffsofancy/diff-so-fancy
+echo "/usr/bin/diff -u \$* | diff-so-fancy" > ~/bin/diff
+chmod +x diffsofancy/diff-so-fancy ~/bin/diff
 ln -s ~/bin/diffsofancy/diff-so-fancy ~/bin/diff-so-fancy
 
 # reload
