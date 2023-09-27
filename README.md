@@ -1,10 +1,16 @@
 ## Marty's Dotfiles, etc.
 
-Install these files on new host:
+To install these files on new host:
+*Note that this requires a few back-and-forth between root and user...*
 
   prerequisite: git
   neither: $HOME/.configs nor $HOME/config
+Run this as root:
+```
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/Marty333/configs/main/config/work/machine-setup.sh)"
+```
 
+Run this as regular user (sherrimn) to clone this repo:
 ```
 cd $HOME
 echo ".configs" >> .gitignore
@@ -14,4 +20,5 @@ config config --local status.showUntrackedFiles no
 config checkout
 ```
 
-- If desired, run `config/work/setup-shell.sh`
+Then again as regular user:
+`sh /home/sherrimn/config/work/shell-setup.sh`
