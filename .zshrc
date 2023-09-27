@@ -112,7 +112,7 @@ alias ll='ls -latr'
 alias vi=nvim
 alias less=bat
 alias gs='git status'
-alias config='/usr/bin/git --git-dir=$HOME/.config/ --work-tree=$HOME'
+alias config='/usr/bin/git --git-dir=$HOME/.configs/ --work-tree=$HOME'
 
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
