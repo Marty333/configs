@@ -21,5 +21,14 @@ alias config='/usr/bin/git --git-dir=$HOME/.configs/ --work-tree=$HOME'
 config config --local status.showUntrackedFiles no
 config checkout
 
+# install diff-so-fancy:
+# https://gist.github.com/gmolveau/8fcdb5e953bd6c9dad18ecd39b9718a4
+mkdir -p ~/bin 
+# add ~/bin to your PATH (.bashrc or .zshrc)
+cd ~/bin
+git clone https://github.com/so-fancy/diff-so-fancy diffsofancy
+chmod +x diffsofancy/diff-so-fancy
+ln -s ~/bin/diffsofancy/diff-so-fancy ~/bin/diff-so-fancy
+
 # reload
 exec zsh
