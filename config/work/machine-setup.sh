@@ -29,11 +29,12 @@ $PKG_MANAGER update && $PKG_MANAGER install -y \
 
 # Add my userID:
 useradd sherrimn
-mkdir /home/sherrimn
-chown sherrimn /home/sherrimn
 
 # Set UID to match old servers:
 sed -i -e "s/sherrimn:x:1000:1000:/sherrimn:x:5078:100:sherrimn/" /etc/passwd
+
+mkdir /home/sherrimn
+chown sherrimn /home/sherrimn
 
 echo "Please create a password for user sherrimn:"
 passwd sherrimn
