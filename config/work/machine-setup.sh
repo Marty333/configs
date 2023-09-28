@@ -4,6 +4,7 @@
 PKG_MANAGER='apt-get'
 $PKG_MANAGER update && $PKG_MANAGER install -y \
 	alien\
+	dnsutils\
 	git\
 	zsh\
 	htop\
@@ -14,6 +15,7 @@ $PKG_MANAGER update && $PKG_MANAGER install -y \
 	exa\
 	neofetch\
 	python3\
+	telnet\
 	fzf\
 	silversearcher-ag\
 	zoxide
