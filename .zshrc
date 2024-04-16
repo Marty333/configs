@@ -140,15 +140,17 @@ export SHELL=/usr/bin/zsh
 alias cd=z
 #alias ls='ls -a --color=auto'
 alias ls='exa -aG -I .git --group-directories-first'
+alias ls='lsd -a -I .git --group-directories-first'
 #alias ll='ls -latr'
 alias ll='exa -las changed -I .git --group-directories-first'
+alias ll='lsd -latr -I .git --group-directories-first'
 alias gs='git status'
 #alias gbc='git checkout -b '
 alias gbc=gcb
 unalias gcb
 
 #alias gg='grep -r --exclude-dir=node_modules --exclude-dir=dist'
-alias gg=ag
+alias gg='ag --hidden'
 alias vi=vim
 alias t0='tmux attach-session -t 0'
 alias bfg='java -jar ~/bin/bfg-1.13.0.jar'

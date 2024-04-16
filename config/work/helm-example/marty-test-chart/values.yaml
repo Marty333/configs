@@ -66,9 +66,9 @@ resources:
   # choice for the user. This also increases chances charts run on environments with little
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-  limits:
-    cpu: 2
-    memory: 16Gi
+  #  limits:
+  #    cpu: 2
+  #    memory: 16Gi
   # requests:
   #   cpu: 100m
   #   memory: 128Mi
@@ -80,32 +80,26 @@ autoscaling:
   targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
 
-# Additional volumes on the output Deployment definition.
+persistence:
+  enabled: true
+  storageClassName: "longhorn"  # an empty string here will use the default storage class
+  accessModes:
+    - ReadWriteOnce
+  size: 333Gi
+
 volumes:
-  - name: etools-pv-storage
+  #  - name: eda-spare-pv
+  #  persistentVolumeClaim:
+  #    claimName: eda-spare-pv-claim
+  - name: martydata-volume
     persistentVolumeClaim:
-      claimName: etools2-test-claim
-  - name: nas-home-readonly
-    persistentVolumeClaim:
-      claimName: nas-home-readonly-claim
-  - name: csdev-readonly
-    persistentVolumeClaim:
-      claimName: csdev-readonly-claim
-# - name: foo
-#   secret:
-#     secretName: mysecret
-#     optional: false
+      claimName: martydata-claim
 
 # Additional volumeMounts on the output Deployment definition.
 volumeMounts:
-  - mountPath: "/etools2"
-    name: etools-pv-storage
-  - mountPath: "/home/nas-home"
-    name: nas-home-readonly
-    readOnly: true
-  - mountPath: "/csdev"
-    name: csdev-readonly
-    readOnly: true
+  - mountPath: "/martydata"
+    name: martydata-volume
+    readOnly: false
 
 nodeSelector: {}
 
