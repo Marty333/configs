@@ -12,7 +12,7 @@ $PKG_MANAGER update && $PKG_MANAGER install -y \
 	vim\
 	wget\
 	bat\
-	exa\
+	eza\
 	neofetch\
 	python3\
 	telnet\
