@@ -12,3 +12,4 @@ Run this as regular user (sherrimn) to set up the shell and clone this repo:
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/Marty333/configs/main/config/work/shell-setup.sh)"
 ```
 
+**Note that you must CTRL-D out of the zsh when the above shell-setup.sh runs, in order to set up powerlevel10k.
