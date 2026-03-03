@@ -13,7 +13,7 @@ $PKG_MANAGER update && $PKG_MANAGER install -y \
 	wget\
 	bat\
 	lsd\
-	neofetch\
+	fastfetch\
 	python3\
 	telnet\
 	fzf\
@@ -40,4 +40,4 @@ echo "Please create a password for user sherrimn:"
 passwd sherrimn
 
 # Show where we are:
-neofetch
+fastfetch
