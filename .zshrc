@@ -155,9 +155,16 @@ alias vi=vim
 alias t0='tmux attach-session -t 0'
 alias bfg='java -jar ~/bin/bfg-1.13.0.jar'
 
-alias cat='batcat --paging=never'
-alias fd=fdfind
-alias less='batcat'
+# bat/fd are named batcat/fdfind on Debian (package name collision there);
+# plain bat/fd elsewhere (e.g. Arch/Omarchy).
+if command -v batcat >/dev/null 2>&1; then
+	alias cat='batcat --paging=never'
+	alias less='batcat'
+else
+	alias cat='bat --paging=never'
+	alias less='bat'
+fi
+command -v fdfind >/dev/null 2>&1 && alias fd=fdfind
 
 alias diff=$HOME/bin/diff
 
@@ -165,10 +172,12 @@ alias k=kubectl
 
 # Dotfiles bare repo alias:
 alias config='/usr/bin/git --git-dir=$HOME/.configs/ --work-tree=$HOME'
-source ~/.private_alias
+[[ -f ~/.private_alias ]] && source ~/.private_alias
 
 export DOCKER_HOST="tcp://localhost:2375"
-export DISPLAY=:0
+# Only force DISPLAY on X11-only setups; leave it alone under Wayland (e.g.
+# Hyprland/Omarchy), where XWayland already sets the right value.
+[[ -z "$DISPLAY" && -z "$WAYLAND_DISPLAY" ]] && export DISPLAY=:0
 
 export GTK_THEME=Adwaita:dark
 
@@ -183,9 +192,9 @@ export NVM_DIR="$HOME/.nvm"
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 #export PATH="$PATH:$HOME/.rvm/bin"
 
-export PATH="$PATH:/mnt/c/Users/sherrimn/bin/"
+[[ -d /mnt/c/Users/sherrimn/bin ]] && export PATH="$PATH:/mnt/c/Users/sherrimn/bin/"
 
-source ~/.start-docker.sh
+[[ -f ~/.start-docker.sh ]] && source ~/.start-docker.sh
 
 cd $HOME
 
